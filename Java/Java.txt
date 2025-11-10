@@ -1,0 +1,1313 @@
+1.Java中的public static void main(String[] argv)即相当于C语言中的main()
+这是Java主程序的执行入口
+请你保证 public static void main(String[] argv) 方法出现且只出现在一个类（通常为 MainClass）中。
+
+
+2.一个 Java 程序可以认为是一系列对象的集合，而这些对象通过调用彼此的方法来协同工作。下面简要介绍下类、对象、方法和实例变量的概念。
+
+对象：对象是类的一个实例，有状态和行为。例如，一条狗是一个对象，它的状态有：颜色、名字、品种；行为有：摇尾巴、叫、吃等。
+类：类是一个模板，它描述一类对象的行为和状态。
+方法：方法就是行为，一个类可以有很多方法。逻辑运算、数据修改以及所有动作都是在方法中完成的。
+实例变量：每个对象都有独特的实例变量，对象的状态由这些实例变量的值决定。
+
+
+3.Java基本语法
+大小写敏感：Java 是大小写敏感的，这就意味着标识符 Hello 与 hello 是不同的。
+
+类名：对于所有的类来说，类名的首字母应该大写。如果类名由若干单词组成，那么每个单词的首字母应该大写，例如 MyFirstJavaClass 。
+
+方法名：所有的方法名都应该以小写字母开头。如果方法名含有若干单词，则后面的每个单词首字母大写。
+
+源文件名：源文件名必须和类名相同。当保存文件的时候，你应该使用类名作为文件名保存（切记 Java 是大小写敏感的），文件名的后缀为 .java。（如果文件名和类名不相同则会导致编译错误）。
+
+主方法入口：所有的 Java 程序由 public static void main(String[] args) 方法开始执行。
+
+
+4.一个类可以包含以下类型变量：
+
+局部变量：在方法、构造方法或者语句块中定义的变量被称为局部变量。变量声明和初始化都是在方法中，方法结束后，变量就会自动销毁。
+
+成员变量：成员变量是定义在类中，方法体之外的变量。这种变量在创建对象的时候实例化。成员变量可以被类中方法、构造方法和特定类的语句块访问。
+
+类变量：类变量也声明在类中，方法体之外，但必须声明为 static 类型。
+
+
+5.一个源文件中只能有一个 public 类
+一个源文件可以有多个非 public 类
+
+源文件的名称应该和 public 类的类名保持一致。例如：源文件中 public 类的类名是 Employee，那么源文件应该命名为Employee.java。
+
+如果一个类定义在某个包中，那么 package 语句应该在源文件的首行。
+如果源文件包含 import 语句，那么应该放在 package 语句和类定义之间。如果没有 package 语句，那么 import 语句应该在源文件中最前面。
+import 语句和 package 语句对源文件中定义的所有类都有效。在同一源文件中，不能给不同的类不同的包声明。
+
+
+6.内置数据类型
+byte
+byte 数据类型是8位、有符号的，以二进制补码表示的整数；
+最小值是 -128（-2^7）；
+最大值是 127（2^7-1）；
+默认值是 0；
+byte 类型用在大型数组中节约空间，主要代替整数，因为 byte 变量占用的空间只有 int 类型的四分之一；
+例子：byte a = 100，byte b = -50。
+
+short：
+short 数据类型是 16 位、有符号的，以二进制补码表示的整数
+最小值是 -32768（-2^15）；
+最大值是 32767（2^15 - 1）；
+Short 数据类型也可以像 byte 那样节省空间。一个short变量是int型变量所占空间的二分之一；
+默认值是 0；
+例子：short s = 1000，short r = -20000。
+
+int：
+int 数据类型是32位、有符号的以二进制补码表示的整数；
+最小值是 -2,147,483,648（-2^31）；
+最大值是 2,147,483,647（2^31 - 1）；
+一般地整型变量默认为 int 类型；
+默认值是 0 ；
+例子：int a = 100000, int b = -200000。
+
+long：
+long 数据类型是 64 位、有符号的以二进制补码表示的整数；
+最小值是 -9,223,372,036,854,775,808（-2^63）；
+最大值是 9,223,372,036,854,775,807（2^63 -1）；
+这种类型主要使用在需要比较大整数的系统上；
+默认值是 0L；
+例子： long a = 100000L，long b = -200000L。
+"L"理论上不分大小写，但是若写成"l"容易与数字"1"混淆，不容易分辩。所以最好大写。
+
+float：
+float 数据类型是单精度、32位、符合IEEE 754标准的浮点数；
+float 在储存大型浮点数组的时候可节省内存空间；
+默认值是 0.0f；
+浮点数不能用来表示精确的值，如货币；
+例子：float f1 = 234.5f;
+
+double：
+double 数据类型是双精度、64 位、符合 IEEE 754 标准的浮点数；
+浮点数的默认类型为 double 类型；
+double类型同样不能表示精确的值，如货币；
+默认值是 0.0d；
+
+boolean：
+boolean数据类型表示一位的信息；
+只有两个取值：true 和 false；
+这种类型只作为一种标志来记录 true/false 情况；
+默认值是 false；
+例子：boolean one = true;
+
+char
+char 类型是一个单一的 16 位 Unicode 字符；
+最小值是 \u0000（十进制等效值为 0）；
+最大值是 \uffff（即为 65535）；
+char 数据类型可以储存任何字符；
+例子：char letter = 'A';
+
+使用final关键字来修饰常量，声明方式与变量类似，常量一旦被赋值就不能再修改
+final double Pi =3.1415927;
+
+byte,short,int,long都可以用10进制、8进制、16进制的方式来表示
+当使用字面量的时候，前缀0表示8进制，0x表示16进制
+如：int decimal=100;
+       int octal=0144;
+   int hexa=0x64;
+
+自动类型转换
+byte,short,char->int->long->float->double
+
+
+7.Java 语言支持的变量类型有：
+
+局部变量（Local Variables）：定义在方法、构造方法或语句块中的变量，作用域只限于当前方法、构造方法或语句块中。局部变量必须在使用前声明，并且不能被访问修饰符修饰。
+public class LocalVariablesExample {
+    public static void main(String[] args) {
+        int a = 10; // 局部变量a的声明和初始化
+        int b;     // 局部变量b的声明
+        b = 20;    // 局部变量b的初始化
+        
+        System.out.println("a = " + a);
+        System.out.println("b = " + b);
+        
+        // 如果在使用之前不初始化局部变量，编译器会报错
+         int c;
+       	 System.out.println("c = " + c);//此时会报错
+    }
+}
+
+
+成员变量（Instance Variables）：定义在类中，但在方法、构造方法和语句块之外的变量，作用域为整个类，可以被类中的任何方法、构造方法和语句块访问。成员变量可以被访问修饰符修饰。
+import java.io.*;
+public class Employee{
+   // 这个成员变量对子类可见
+   public String name;
+   // 私有变量，仅在该类可见
+   private double salary;
+   //在构造器中对name赋值
+   public Employee (String empName){
+      name = empName;
+   }
+   //设定salary的值
+   public void setSalary(double empSal){
+      salary = empSal;
+   }  
+   // 打印信息
+   public void printEmp(){
+      System.out.println("名字 : " + name );
+      System.out.println("薪水 : " + salary);
+   }
+ 
+   public static void main(String[] args){
+      Employee empOne = new Employee("RUNOOB");//在构造器中有参数变量的话，就需要在创建new实例的						时候加入参数
+      empOne.setSalary(100000.0);
+      empOne.printEmp();
+   }
+}
+
+静态变量（Class Variables）：定义在类中、方法之外的变量，并且使用 static 关键字修饰，作用域为整个类，可以被类中的任何方法、构造方法和语句块访问，静态变量的值在程序运行期间只有一个副本。静态变量可以被访问修饰符修饰。
+Java 中的静态变量是指在类中定义的一个变量，它与类相关而不是与实例相关，即无论创建多少个类实例，静态变量在内存中只有一份拷贝，被所有实例共享。
+静态变量在类加载时被创建，在整个程序运行期间都存在。
+常量和静态变量的区别
+常量也是与类相关的，但它是用 final 关键字修饰的变量，一旦被赋值就不能再修改。与静态变量不同的是，常量在编译时就已经确定了它的值，而静态变量的值可以在运行时改变。另外，常量通常用于存储一些固定的值，如数学常数、配置信息等，而静态变量通常用于存储可变的数据，如计数器、全局状态等。
+public class Counter {
+    private static int count = 0;
+    
+    public Counter() {//构造器
+        count++;
+    }
+    
+    public static int getCount() {
+        return count;
+    }
+    
+    public static void main(String[] args) {
+        Counter c1 = new Counter();//每次新建一个实例的时候就会触发构造器，所以每次count会+1
+        Counter c2 = new Counter();
+        Counter c3 = new Counter();
+        System.out.println("目前为止创建的对象数: " + Counter.getCount());
+    }
+}
+
+总之，静态变量是与类相关的变量，具有唯一性和共享性，可以用于存储整个程序都需要使用的数据，但需要注意初始化时机和与常量的区别。
+
+参数变量（Parameters）：方法定义时声明的变量，作为调用该方法时传递给方法的值。参数变量的作用域只限于方法内部。
+Java 中的参数变量是指在方法或构造函数中声明的变量，用于接收传递给方法或构造函数的值。参数变量与局部变量类似，但它们只在方法或构造函数被调用时存在，并且只能在方法或构造函数内部使用。
+方法参数变量的值传递方式有两种：值传递和引用传递。
+值传递：在方法调用时，传递的是实际参数的值的副本。当参数变量被赋予新的值时，只会修改副本的值，不会影响原始值。Java 中的基本数据类型都采用值传递方式传递参数变量的值。
+
+引用传递：在方法调用时，传递的是实际参数的引用（即内存地址）。当参数变量被赋予新的值时，会修改原始值的内容。Java 中的对象类型采用引用传递方式传递参数变量的值。
+
+
+8.Java修饰符
+Java语言提供了很多修饰符，主要分为以下两类：
+访问修饰符
+非访问修饰符
+修饰符用来定义类、方法或者变量，通常放在语句的最前端。
+
+访问控制修饰符
+Java中，可以使用访问控制符来保护对类、变量、方法和构造方法的访问。Java 支持 4 种不同的访问权限。
+
+default (即默认，什么也不写）: 在同一包内可见，不使用任何修饰符。使用对象：类、接口、变量、方法。
+如果在类、变量、方法或构造函数的定义中没有指定任何访问修饰符，那么它们就默认具有默认访问修饰符。
+默认访问修饰符的访问级别是包级别（package-level），即只能被同一包中的其他类访问。
+
+private : 只有本类对象才能访问
+在同一类内可见。使用对象：变量、方法。 注意：不能修饰类（外部类）
+私有访问修饰符是最严格的访问级别，所以被声明为 private 的方法、变量和构造方法只能被所属类访问，并且类和接口不能声明为 private。
+声明为私有访问类型的变量只能通过类中公共的 getter 方法被外部类访问。
+Private 访问修饰符的使用主要用来隐藏类的实现细节和保护类的数据。
+
+public : 任意外部对象都能访问
+对所有类可见。使用对象：类、接口、变量、方法
+被声明为 public 的类、方法、构造方法和接口能够被任何其他类访问。
+如果几个相互访问的 public 类分布在不同的包中，则需要导入相应 public 类所在的包。由于类的继承性，类所有的公有方法和变量都能被其子类继承。
+
+protected : 只有本类对象或子类对象可以访问
+对同一包内的类和所有子类可见。使用对象：变量、方法。 注意：不能修饰类（外部类）。
+protected 需要从以下两个点来分析说明：
+子类与基类在同一包中：被声明为 protected 的变量、方法和构造器能被同一个包中的任何其他类访问；
+子类与基类不在同一包中：那么在子类中，子类实例可以访问其从基类继承而来的 protected 方法，而不能访问基类实例的protected方法。
+protected 可以修饰数据成员，构造方法，方法成员，不能修饰类（内部类除外）。
+接口及接口的成员变量和成员方法不能声明为 protected。
+
+
+非访问修饰符
+为了实现一些其他的功能，Java 也提供了许多非访问修饰符。
+static 修饰符，用来修饰类方法和类变量（静态变量）。
+final 修饰符，用来修饰类、方法和变量，final 修饰的类不能够被继承，修饰的方法不能被继承类重新定义，修饰的变量为常量，是不可修改的。
+abstract 修饰符，用来创建抽象类和抽象方法。
+synchronized 和 volatile 修饰符，主要用于线程的编程。
+
+static 修饰符
+静态变量：
+
+static 关键字用来声明独立于对象的静态变量，无论一个类实例化多少对象，它的静态变量只有一份拷贝。 静态变量也被称为类变量。局部变量不能被声明为 static 变量。
+
+静态方法：
+
+static 关键字用来声明独立于对象的静态方法。静态方法不能使用类的非静态变量。静态方法从参数列表得到数据，然后计算这些数据。
+
+final 修饰符
+final 变量：
+
+final 表示"最后的、最终的"含义，变量一旦赋值后，不能被重新赋值。被 final 修饰的实例变量必须显式指定初始值。
+
+final 修饰符通常和 static 修饰符一起使用来创建类常量。
+
+父类中的 final 方法可以被子类继承，但是不能被子类重写。
+
+声明 final 方法的主要目的是防止该方法的内容被修改。
+
+final 类不能被继承，没有类能够继承 final 类的任何特性
+
+abstract 修饰符
+抽象类：
+
+抽象类不能用来实例化对象，声明抽象类的唯一目的是为了将来对该类进行扩充。
+
+一个类不能同时被 abstract 和 final 修饰。如果一个类包含抽象方法，那么该类一定要声明为抽象类，否则将出现编译错误。
+
+抽象类可以包含抽象方法和非抽象方法。
+
+抽象方法是一种没有任何实现的方法，该方法的具体实现由子类提供。
+
+抽象方法不能被声明成 final 和 static。
+
+任何继承抽象类的子类必须实现父类的所有抽象方法，除非该子类也是抽象类。
+
+如果一个类包含若干个抽象方法，那么该类必须声明为抽象类。抽象类可以不包含抽象方法。
+
+抽象方法的声明以分号结尾，例如：public abstract sample();。
+
+
+synchronized 修饰符
+synchronized 关键字声明的方法同一时间只能被一个线程访问。synchronized 修饰符可以应用于四个访问修饰符。
+
+
+transient 修饰符
+序列化的对象包含被 transient 修饰的实例变量时，java 虚拟机(JVM)跳过该特定的变量。
+
+该修饰符包含在定义变量的语句中，用来预处理类和变量的数据类型。
+
+volatile 修饰符
+volatile 修饰的成员变量在每次被线程访问时，都强制从共享内存中重新读取该成员变量的值。而且，当成员变量发生变化时，会强制线程将变化值回写到共享内存。这样在任何时刻，两个不同的线程总是看到某个成员变量的同一个值。
+
+一个 volatile 对象引用可能是 null。
+
+
+9.不同的运算符
+
+instanceof 运算符
+该运算符用于操作对象实例，检查该对象是否是一个特定类型（类类型或接口类型）。
+String name = "Leon";
+boolean result = name instanceof String; // 由于 name 是 String 类型，所以返回真
+
+Java 增强 for 循环
+Java5 引入了一种主要用于数组的增强型 for 循环。
+public class Test {
+   public static void main(String[] args){
+      int [] numbers = {10, 20, 30, 40, 50};
+ 
+      for(int x : numbers ){
+         System.out.print( x );
+         System.out.print(",");
+      }
+      System.out.print("\n");
+      String [] names ={"James", "Larry", "Tom", "Lacy"};
+      for( String name : names ) {
+         System.out.print( name );
+         System.out.print(",");
+      }
+   }
+}
+
+以上实例编译运行结果如下：
+10,20,30,40,50,
+James,Larry,Tom,Lacy,
+
+
+10.switch-case语句
+当遇到 break 语句时，switch 语句终止。程序跳转到 switch 语句后面的语句执行。case 语句不必须要包含 break 语句。如果没有 break 语句出现，程序会继续执行下一条 case 语句，直到出现 break 语句。
+
+public class Test {
+   public static void main(String args[]){
+      int i = 1;
+      switch(i){
+         case 0:
+            System.out.println("0");
+         case 1:
+            System.out.println("1");
+         case 2:
+            System.out.println("2");
+         case 3:
+            System.out.println("3"); break;
+         default:
+            System.out.println("default");
+      }
+   }
+}
+结果为
+1
+2
+3
+
+
+11.this的使用
+方法中的变量为局部变量，存储在栈中，作用范围是方法内
+而我们想通过构造器初始化的是成员变量，存储在堆中，作用范围是本类内部
+当成员变量和局部变量重名时，优先使用局部变量
+
+通过this.属性来表明这是一个成员变量，与局部变量区分
+
+this可以来访问本类的实例属性
+		    实例方法
+		  构造器
+
+
+12.java Scanner类
+首先需要import java.util.Scanner;
+
+举一个例子：
+import java.util.Scanner;
+public class ScannerDemo {
+    public static void main(String[] args){
+        Scanner scan = new Scanner(System.in);
+        /*if(scan.hasNext()){
+            String str1 = scan.next();
+            System.out.println(str1);
+        }*/
+        if(scan.hasNextLine()){
+            String str2=scan.nextLine();
+            System.out.println(str2);
+        }
+    }
+}
+
+next()
+	1、一定要读取到有效字符后才可以结束输入。
+	2、对输入有效字符之前遇到的空白，next() 方法会自动将其去掉。
+	3、只有输入有效字符后才将其后面输入的空白作为分隔符或者结束符。
+	next() 不能得到带有空格的字符串
+
+nextLine()
+	1、以Enter为结束符,也就是说 nextLine()方法返回的是输入回车之前的所有字符。
+	2、可以获得空白。
+
+
+13.Integer类
+Integer.parseInt()是将整形数据Integer转换为基本数据类型int
+
+
+14.Java两种数据类型分类
+基本数据类型，分为boolean    byte  int  char  long  short  double  float
+引用数据类型，分为数组  类  接口
+
+为了编程的方便，Java引入了基本数据类型，但是为了能够将这些基本数据类型当成对象操作，
+Java为每一个基本数据类型都引入了对应的包装类型，int的包装类就是Integer
+
+int与Integer的基本使用对比
+Integer是int的包装类；int是基本数据类型；
+Integer变量必须实例化后才能使用；int变量不需要；
+Integer实际是对象的引用，指向此new的Integer对象；int是直接存储数据值 ；
+Integer的默认值是null；int的默认值是0。
+
+自动装箱和自动拆箱
+	自动装箱：将基本数据类型重新转换为对象
+		如：Integer num = 9;
+	自动拆箱：将对象重新转换为基本数据类型
+		如：int num1 = num;
+
+15.Character类的方法
+调用方法    Character.isLetter()
+
+isLetter()  返回true或者false
+isDigit()
+isWhitespace()
+isUpperCase()
+isLowerCase()
+toString()  返回字符的字符串形式，字符串的长度仅为1
+
+
+16.String类的方法
+str1 = str2;  字符串可以直接赋值
+String str = "Hello World";
+调用方法    int len = str.length();
+
+String类的静态方法format()能用来创建可复用的格式化字符串，而不仅仅是用于一次打印输出
+String str;
+str = String.format("Hello %s","World");
+
+char charAt(int index)    返回指定索引处的char
+int compareTo(Object o)  返回str与o的第一个不同字符的差值
+
+
+17.StringBuffer 和 StringBuilder类
+当对字符串进行修改的时候，需要使用StringBuffer和StringBuilder类
+和String类不同的是，StringBuffer和StringBuilder类的对象能够被多次的修改，并且不会产生新的未使用对象
+
+public class RunoobTest{
+	public static void main(String args[]){
+		StringBuilder sb = new StringBuilder(10);//新建一个10字节的String Builder
+							//但后续改动可以使之超过10字节
+		sb.append("Runoob..");
+		sb.append("!");//在字符串后面加入
+		sb.insert(8,"java");//插入字符串
+		sb.delete(5,8);//删掉部分字符串，左开右闭
+	}
+}
+
+
+18.HashMap
+HashMap是一个散列表，存储内容是键值对（key-value）映射
+
+import java.util.HashMap;
+public class RunnobTest{
+	public static void main(String[] args){
+		HashMap<Integer,String> hashmap = new HashMap<>();
+		hashmap.put(1,"Google");
+		hashmap.put(2,"Baidu");//添加key-value
+		hashmap.put(3,"zhihu");
+		hashmap.put(4,"Taobao");
+		System.out.println(hashmap);//输出整个HashMap
+
+//get(key)方法来获取key对应的value
+		System.out.println(hashmap.get(2));//通过key
+
+//remove(key)方法来删除key对应的键值对key-value
+		hashmap.remove(1);
+
+//clear方法来删除所有的key-value
+		hashmap.clear();
+
+//size方法来计算HashMap的元素数量
+		System.out.println(hashmap.size());
+
+//keySet()方法来获取key
+//values()方法来获取value
+		for(Integer i : hashmap.keySet()){
+			System.out.println(i);
+		}
+		for(Integer i : hashmap.values()){
+			System.out.println(i);
+		}
+	}
+}
+
+
+19.HashSet
+HashSet是一个不允许有重复元素的集合
+
+import java.util.HashSet;
+public class RunnobTest{
+	public static void main(String[] args){
+		HashSet<String> hashset = new HashSet<>();
+		hashset.add("Google");
+		hashset.add("Runnob");
+		hashset.add("TaoBao");//添加元素
+
+//contains()方法来判断元素是否位于集合中
+		System.out.println(hashset.contains("Zhihu");
+
+//remove()方法来删除集合中的元素
+		hashset.remove("Google");
+
+//clear()方法来删除集合中所有的元素
+		hashset.clear();
+
+//size()方法来计算HashSet中的元素数量
+		System.out.println(hashset.size());
+
+//可以使用for-each来迭代HashSet中的元素
+		for(String str : hashset){
+			System.out.println(str);
+		}
+	}
+}
+
+
+20.数组变量
+声明数组变量
+	dataType[] array;//使用数组前，必须先声明数组
+
+创建数组
+	array = new dataType[arraySize];
+	
+当然数组变量的声明和创建可以用一条语句完成
+	dataType[] array = new dataType[arraySize];
+	或
+	dataType[] array = {value0,value1,...};
+
+
+数组的元素类型和数组的大小都是确定的
+可以使用加强型循环来遍历
+for(type element: array){
+	System.out.println(element);
+}
+	
+
+21.正则表达式
+this is text  匹配字符串"this is text"
+this\s+is\s+text    \s+可以匹配多个空格，所以该正则表达式可以匹配this is text
+^\d+(\.\d+)?    ^定义了以什么开始
+		\d+匹配一个或多个数字
+		？设置括号内的选项是可选的
+		\.匹配"."
+		所以该正则表达式可以匹配"5" "5.5" "5.55"
+		
+java.util.regex包主要包括以下三个类
+	Pattern类：pattern对象是一个正则表达式的编译表示。Pattern类没有公共构造方法，要创建一个		Pattern对象，必须首先调用其公共静态编译方法，它返回一个Pattern对象。该方法接受一个		正则表达式作为它的第一个参数
+	Matcher类：Matcher对象是对输入字符串进行解释和匹配操作的引擎。与Pattern类一样,Matcher也没		有公共构造方法。需要调用Pattern对象的matcher方法来获得一个Matcher对象
+	PatternSyntaxException：PatternSyntaxException是一个非强制异常类，它表示一个正则表达式式		模式中的语法错误
+
+正则表达式的捕获组
+捕获组是把多个字符当一个单独单元进行处理的方法，它通过对括号内的字符分组来创建
+捕获组是通过从左至右计算其开括号来编号。
+例如：在正则表达式((A)(B(C)))，有四个这样的组
+((A)(B(C)))
+(A)
+(B(C))
+(C)
+可以通过调用matcher对象的groupCount方法来查看表达式有多少个分组
+groupCount方法返回一个int值，表示matcher对象当前有多少个捕获组
+还有一个特殊的组(group(0))，它总是代表整个表达式。该组不包括在groupCount的返回值中
+
+
+正则表达式语法
+字面值字符：例如字母、数字、空格等，可以直接匹配它们自身
+	(hello world)	hello world√	Hello world×
+特殊字符：例如.  *  +  ?，它们具有特殊的含义和功能
+	.匹配除换行符\n之外的任何单字符。若匹配.本身，则需要使用\\.
+		(hello.rld)	hellowrld√	hello world×
+		(hello\\.world)	hello.world√	hello world×
+	*匹配前面的子表达式零次或多次。若匹配*本身，则需要使用\\*
+		(hel*o world)	helo world√	hello world√	heo world√
+		(hello world)*	hello world√	hello worldhello world√
+	+匹配前面的子表达式至少一次。若匹配+本身，则需要使用\\+
+	?匹配前面的子表达式零次或一次。若匹配?本身，则需要使用\\?
+	{}标记限定符表达式。若匹配{或}本身，则需要使用\\{或\\}
+		(hello{3})	hellooo√	hello×
+		(hello{1,})	helloooooo√	hello√
+		(hello{1,3})	hello√		helloo√		hellooo√
+字符类：用[]包围的字符集合，用于匹配方括号[]内的任意一个字符
+	([123]{2})	11√	12√	21√	34×
+元字符：例如\d  \w  \s，用于匹配特定类型的字符，如数字、字母、空白字符等
+	\w匹配一个字，包括大小写字母、数字和下划线，等价于[0-9a-zA-Z_]
+		(\\w+)	a√	123√	2023O_o√
+	\d匹配一个数字，等价于[0-9]
+		(\\d+)	1√	123√
+	
+在Java中，\\才能被解析为其它语言中的转义作用
+{n}	正好匹配n次
+{n,}	至少匹配n次
+{n,m}	匹配至少n次，至多m次
+？	当此字符紧随任何其它限定符(*、+、{n}...)之后时，匹配模式是非贪心的。
+	非贪心模式匹配搜索到的尽可能短的字符串，而默认的贪心模式则匹配搜索到的尽可能长的字符串
+	例如：在字符串"ooooo"中，"o+?"只匹配单个“o"
+x|y	匹配x或y
+[xyz]	匹配[]中包含的任一字符
+[^xyz]	匹配未包含的任一字符
+
+
+String类的应用
+split方法是基于正则表达式进行字符串分割的方法，它会按照模式匹配后的字符串进行分割，将分割结果放在一个	字符串数组中，数组大小即为分割数。
+注意其不会讲匹配到的字符串保存，只会把匹配字符串前后的其它部分进行保存，匹配到的字符串即被割掉了
+
+如：public class Split {
+    public void example() {
+        String oo = "oo is the  best!!";
+        String info = "age:23 height:180 weight:70";
+        /* 使用空格进行字符串分割 */
+        String[] group1 = oo.split(" ");
+        System.out.println("Space Test");
+        System.out.println("==========");
+        for (String s : group1) {
+            System.out.println(s);
+        }
+        System.out.println("-------------");
+        /* 当匹配到 1至3个数字时 对字符串分割*/
+        String[] group2 = info.split("[0-9]{1,3}"); // 关于正则表达式在第二部分会介绍
+        System.out.println("Regex Test");
+        System.out.println("==========");
+        for (String s : group2) {
+            System.out.println(s);
+        }
+    }
+}
+运行结果为：
+Space Test
+==========
+oo
+is
+the
+
+best!!
+-------------
+Regex Test
+==========
+age:
+ height:
+ weight:
+
+indexOf方法是用于获取字符或字符串位置的方法
+如果没有找到目标字符或字符串，则返回-1
+如果找到，则返回其第一个位置
+
+subString是用于获取字符串的子字符串的方法，按照所选位置切割原字符串从而获得子字符串
+subString(4)  则获取从第五个字符开始到字符串的最后
+subString(4,7)	则获取从第五个字符到第七个字符，左开右闭
+
+trim方法是用于删除字符串的头尾空白符的方法
+
+
+
+22.方法
+System.out.println();
+println()是一个方法
+System是系统类
+out是标准输出对象
+
+方法的命名规则：应使用驼峰命名法，如findBottleBag()
+
+方法的重载：如果一个类的两个方法拥有相同的名字，但是参数列表不同，则此时Java编译器会根据传递的参数来	判断调用哪个函数
+
+命令行参数的使用：
+	如果希望运行一个程序的时候再传递给它消息，便需要命令行参数给main()函数实现
+	命令行参数是在执行程序时候紧跟在程序名字后面的信息
+	在IDEA中可以通过运行->编辑配置->运行实参  来进行命令行参数的使用
+
+可变参数：在方法声明中，在指定参数类型后加一个省略号
+	一个方法中只能指定一个可变参数，它必须是该方法的最后一个参数，任何普通的参数必须在它之前声明
+	可变参数类似于传递了一个数组
+例如：public class VarargsDemo {
+    public static void main(String[] args) {
+        // 调用可变参数的方法
+        printMax(34, 3, 3, 2, 56.5);//可以传递多个参数
+        printMax(new double[]{1, 2, 3});//也可以传递一个数组
+    }
+ 
+    public static void printMax( double... numbers) {//可变参数在方法中的使用类似于数组
+        if (numbers.length == 0) {
+            System.out.println("No argument passed");
+            return;
+        }
+ 
+        double result = numbers[0];
+ 
+        for (int i = 1; i <  numbers.length; i++){
+            if (numbers[i] >  result) {
+                result = numbers[i];
+            }
+        }
+        System.out.println("The max value is " + result);
+    }
+}
+
+
+23.Java Stream,File,IO
+Java.io包几乎包含了所有操作输入、输出需要的类，所有这些流类代表了输入源和输出目标
+import java.io.*;
+
+读取控制台输入
+Java的控制台输入由System.in完成
+为了获得一个绑定到控制台的字符流，可以把System.in包装在一个BufferedReader对象中来创建一个字符流
+如：BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+
+从控制台读取多字符输入
+Java从BufferedReader对象读取一个字符要使用read()方法
+每次调用read()方法，它会从输入流读取一个字符并把该字符作为整数值返回。当流结束的时候返回-1
+可以每次输入很多字符，但调用一次read()，其只会读入一个字符。注意'\n'换行符也会被读入
+例如：//使用 BufferedReader 在控制台读取字符
+ 
+import java.io.*;
+ 
+public class BRRead {
+    public static void main(String[] args) throws IOException { //要抛出IOException
+        char c;
+        // 使用 System.in 创建 BufferedReader
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("输入字符, 按下 'q' 键退出。");
+        // 读取字符
+        do {
+            c = (char) br.read();
+            System.out.println(c);
+        } while (c != 'q');
+    }
+}
+
+
+从控制台读取字符串
+Java从BufferedReader对象读取字符串需要使用readLine()方法
+注意readLine()不会读入最后一个换行符
+例如：//使用 BufferedReader 在控制台读取字符
+import java.io.*;
+ 
+public class BRReadLines {
+    public static void main(String[] args) throws IOException {
+        // 使用 System.in 创建 BufferedReader
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String str;
+        System.out.println("Enter lines of text.");
+        System.out.println("Enter 'end' to quit.");
+        do {
+            str = br.readLine();
+            System.out.println(str);
+        } while (!str.equals("end"));
+    }
+}
+
+
+控制台输出
+Java控制台的输出由print()和println()完成，这些方法都由类PrintStream定义
+System.out是该类对象的一个引用
+
+
+读写文件
+FileInputStream流
+该流用于从文件读取数据
+可以使用字符串类型的文件名来创建一个输入流对象来读取文件
+	如：InputStream f = new FileInputStream("C:/java/hello");
+也可以使用一个文件对象来创建一个输入流对象来读取文件。首先使用File()方法来创建一个文件对象
+	如：File f = new File("C:/java/hello");
+	    InputStream in = new FileInputStream(f);
+FileOutputStream流
+该类用来创建一个文件并向文件中写数据
+如果该流在打开文件进行输出前，目标文件不存在，那么该流回创建一个文件
+使用字符串类型的文件名来创建一个输出流对象
+	如：OutputStream f = new FileOutputStream("C:/java/hello");
+也可以使用一个文件对象来创建一个输出流来写文件。首先使用File()方法来创建一个文件对象
+	如：File f = new File("C:/java/hello");
+	    OutputStream out = new FileOutputStream(f);
+//文件名 :fileStreamTest2.java
+import java.io.*;
+ 
+public class fileStreamTest2 {
+    public static void main(String[] args) throws IOException {
+ 
+        File f = new File("test.txt");
+        FileOutputStream fop = new FileOutputStream(f);
+        // 构建FileOutputStream对象,文件不存在会自动新建
+ 
+        OutputStreamWriter writer = new OutputStreamWriter(fop, "UTF-8");
+        // 构建OutputStreamWriter对象,参数可以指定编码,默认为操作系统默认编码,windows上是gbk
+ 
+        writer.append("中文输入");
+        // 写入到缓冲区
+ 
+        writer.append("\r\n");
+        // 换行
+ 
+        writer.append("English");
+        // 刷新缓存冲,写入到文件,如果下面已经没有写入的内容了,直接close也会写入
+ 
+        writer.close();
+        // 关闭写入流,同时会把缓冲区内容写入文件,所以上面的注释掉
+ 
+        fop.close();
+        // 关闭输出流,释放系统资源
+ 
+        FileInputStream fip = new FileInputStream(f);
+        // 构建FileInputStream对象
+ 
+        InputStreamReader reader = new InputStreamReader(fip, "UTF-8");
+        // 构建InputStreamReader对象,编码与写入相同
+ 
+        StringBuffer sb = new StringBuffer();
+        while (reader.ready()) {
+            sb.append((char) reader.read());
+            // 转成char加到StringBuffer对象中
+        }
+        System.out.println(sb.toString());
+        reader.close();
+        // 关闭读取流
+ 
+        fip.close();
+        // 关闭输入流,释放系统资源
+ 
+    }
+}
+
+
+Java中的目录
+创建目录：
+mkdir()方法创建一个文件夹，成功则返回true，失败则返回false。
+	失败表明File对象指定的路径已经存在，或者由于整个路径还不存在，该文件夹不能被创建
+mkdirs()方法创建一个文件夹和它的所有父文件夹
+如：import java.io.File;
+ 
+public class CreateDir {
+    public static void main(String[] args) {
+        String dirname = "/tmp/user/java/bin";
+        File d = new File(dirname);
+        // 现在创建目录
+        d.mkdirs();
+    }
+}//运行之后会产生C:/tmp/user/java/bin的一系列文件夹
+读取目录：
+一个目录其实就是一个File对象，它包含其它文件和文件夹
+如果创建一个File对象并且它是一个目录，那么调用isDirectory()方法则会返回true
+可以通过调用该对象上的list()方法，来提取它包含的文件和文件夹的列表
+如：import java.io.File;
+ 
+public class DirList {
+    public static void main(String args[]) {//只会输出/tmp下面的第一层子文件夹或者文件
+        String dirname = "/tmp";
+        File f1 = new File(dirname);
+        if (f1.isDirectory()) {
+            System.out.println("目录 " + dirname);
+            String s[] = f1.list();
+            for (int i = 0; i < s.length; i++) {
+                File f = new File(dirname + "/" + s[i]);
+                if (f.isDirectory()) {
+                    System.out.println(s[i] + " 是一个目录");
+                } else {
+                    System.out.println(s[i] + " 是一个文件");
+                }
+            }
+        } else {
+            System.out.println(dirname + " 不是一个目录");
+        }
+    }
+}
+删除目录或文件：
+删除文件可以使用delete()方法
+注意当删除某一目录时，必须保证该目录下没有其它文件才能正确删除，否则将失败。
+import java.io.File;
+ 
+public class DeleteFileDemo {
+    public static void main(String[] args) {
+        // 这里修改为自己的测试目录
+        File folder = new File("/tmp/java/");
+        deleteFolder(folder);
+    }
+ 
+    // 删除文件及目录
+    public static void deleteFolder(File folder) {
+        File[] files = folder.listFiles();
+        if (files != null) {
+            for (File f : files) {
+                if (f.isDirectory()) {
+                    deleteFolder(f);
+                } else {
+                    f.delete();
+                }
+            }
+        }
+        folder.delete();
+    }
+}
+
+
+24.Java Scanner类
+java.util.Scanner是Java5的新特征，可以通过Scanner类来获取用户的输入
+通过Scanner类的next()与nextLine()方法获取输入的字符串，在读取前一般我们需要使用hasNext和	hasNextLine来判断是否还有输入的数据。
+next()会被空格和换行打断，nextLine()只会被换行打断
+注意hasNext和hasNextLine方法都会阻塞，直到下一个字符串或下一行输入的时候才会解除阻塞，所以二者只会	回true，永远都不会返回false
+hasNext()是以空格或换行为标志来判断下一个的，hasNextLine()是以换行为标志来判断下一个的
+
+next()
+	一定要读取到有效字符后才可以结束
+	对输入有效字符之前遇到的空白，next()方法会自动将其去掉
+	只有输入有效字符后才将其后面输入的空白作为分隔符或者结束符
+	next()不能得到带有空格的字符串
+nextLine()
+	以换行为结束符
+	可以获得空白行
+
+此外还可以使用nextInt()  nextDouble()等方法
+
+如：import java.util.Scanner; 
+ 
+public class ScannerDemo {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        // 从键盘接收数据
+ 
+        // next方式接收字符串
+        System.out.println("next方式接收：");
+        // 判断是否还有输入
+        if (scan.hasNext()) {
+            String str1 = scan.next();
+            System.out.println("输入的数据为：" + str1);
+        }
+        scan.close();
+    }
+}
+
+
+25.Java异常处理
+异常是程序中的一些错误，但并不是所有的错误都是异常，并且错误有时候是可以避免的
+异常发生的原因有很多，通常包含一下几大类：
+	用户输出了非法数据
+	要打开的文件不存在
+	网络通信时连接中断，或者JVM内存溢出
+
+Exception类的层次
+所有的异常类是从java.lang.Exception类继承的子类
+Exception类是Throwable类的子类，除了Exception类外，Throwable还有一个子类Error
+Exception类有两个主要的子类：IOException类和RuntimeException类
+
+捕获异常
+try catch语句，try catch代码块中的代码称为保护代码
+在Java中常采用try catch语句来捕获异常并处理
+如：try {
+    逻辑代码块1;
+} catch(ExceptionType e) {
+    处理代码块1;
+}
+在以上语法中，把可能引发异常的语句封装在try语句块中，用以捕获可能发生的异常
+
+如果try语句块中发生异常，那么一个相应的异常对象就会被抛出，然后catch语句就会依据所抛出的异常对象的类型进行捕获，并处理。处理之后，程序会跳过try语句块中剩余的语句，转到catch语句块后的第一条语句开始执行。
+
+如果try语句块中没有异常发生，那么try块正常结束，后面的catch语句块被跳过，程序将从catch语句块后的第一条语句开始执行。
+
+// 文件名 : ExcepTest.java
+import java.io.*;
+public class ExcepTest{
+ 
+   public static void main(String args[]){
+      try{
+         int a[] = new int[2];
+         System.out.println("Access element three :" + a[3]);
+      }catch(ArrayIndexOutOfBoundsException e){
+         System.out.println("Exception thrown  :" + e);
+      }
+      System.out.println("Out of the block");
+   }
+}
+
+如果一个try代码块后面跟随多个catch代码块的情况叫做多重捕获
+try{
+   // 程序代码
+}catch(异常类型1 异常的变量名1){
+  // 程序代码
+}catch(异常类型2 异常的变量名2){
+  // 程序代码
+}catch(异常类型3 异常的变量名3){
+  // 程序代码
+}
+
+
+26.Java继承
+继承就是子类继承父类的特征和行为，使得子类对象（实例）具有父类的实例域和方法，或子类从父类继承方法，	使得子类具有父类相同的行为。	
+子类会具有父类的一般特性也会具有自身的特性。
+
+
+27.输入解析
+获取输入
+提取数据
+	分析输入序列结构的特征，提取需要的数据
+验证数据
+	验证输入数据的合法性，确保满足特定条件
+转换为程序内部数据
+	按照类数据结构的定义进行转换
+
+
+输入序列结构的特征分析：序列结构和嵌套结构
+
+
+输入序列结构到对象层次结构的映射
+	用于将字符串的输入序列转换为具有层次化结构的对象表示
+
+
+当可以准确地定义出一个字符串的序列结构特征时，可以使用正则表达式来处理
+split基于正则表达式切分字符串
+split(String regrex)
+split(String regrex, int limit)限制返回字符串的个数
+
+
+String[] groups = str.split("-")；//以"-"为分隔符，返回一系列字符串
+正则表达式的模糊匹配
+.	匹配任意单个字符		如：ab.可以匹配abc,ab1，但不能匹配ab,abcc
+\d	匹配一个数字		如：1\d1可以匹配101和111
+\w	匹配一个字母、数字或下划线
+\D	匹配非数字
+\s	匹配一个空格字符（空格和tab字符）
+\n	匹配一个换行符
+\r	匹配一个回车符
+
+重复匹配
+*	可以匹配0或多个字符	如：object\d*可以匹配object123、object1
++	可以匹配至少一个字符
+？	可以匹配0或1个字符
+{}	指定重复次数		如：A\d{3}
+
+\s+可以匹配一个或多个空格或tab字符
+\d+可以匹配一个或多个数字
+
+
+
+复杂匹配规则
+匹配开头和结尾	^表示开头，$表示结尾
+
+匹配指定范围	[]表示匹配范围内的字符，如[3-9]可以匹配3-9
+					[^A-F]表示匹配A-F之外的任意字符
+
+规则匹配		apple|banana表示可以匹配apple或banana
+例如：匹配11位电话号码，必须以1开头，第二位数字只能是3-9
+	tel.matches("^1[3-9]\\d{9}");
+
+
+非贪婪匹配：任何一个规则，它总是尽可能多地向后匹配
+
+
+将复杂的输入序列结构分解成多个层次的正则表达式模式，以便逐层匹配和提取所需的信息
+	设计多层嵌套、多个子元素
+
+String str = "(\\D*)(\\d+)";
+Pattern pattern = Pattern.compile(str);
+Matcher matcher1 = pattern.matcher("java666");//创建了一个新的Matcher对象matcher1，这个对象，						将以pattern为模式，在"java666"里面去搜索符合						pattern的内容
+Matcher matcher2 = pattern.matcher("abcabc");
+
+(\\D*)(\\d+)在这个符号串中，有两个括号，这个括号不会作为字符被matcher1比较，它的作用是，一个括号包	裹为一个group，这样在匹配后，可以容易的取出匹配到的对应内容
+如：matcher1.group()	java666
+matcher1.group(0)	java666
+matcher1.group(1)	java
+matcher1.group(2)	666
+
+注意：不能在没有matcher.find()的情况下使用group()方法
+matcher.find()不是一个判断方法，而是一个执行方法，它的返回值会是它执行后成功与否的结果
+	比如它可以把结果放入matcher.group()中
+matcher.find()的意义是尝试查找与该模式匹配的输入序列的下一个子序列，注意是下一个
+如：import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Main {
+    public static void main(String[] args) {
+        String str = "(\\D*)(\\d+)";
+        Pattern pattern = Pattern.compile(str);
+        Matcher matcher1 = pattern.matcher("java666python777");
+        Matcher matcher2 = pattern.matcher("abcabc");
+        while(matcher1.find()){
+            System.out.println(matcher1.group(1));
+        }
+    }
+
+}
+//会输出java
+	python
+
+
+28.常见错误
+引用错误：空指针异常
+		引用对象为
+	索引越界异常
+	类型转换错误
+		类型相同
+		类型具有父类与子类关系
+		这时候可以进行类型转换，不然会报错
+运算错误：逻辑运算短路
+		如：if(string.length()>5||string==null)如果此时string为空，则会报java.lang.NUllPointerException
+	隐式强转与类型提升
+	
+
+29.浅析Java的内存情况
+JVM的内存划分为5个部分：虚拟机栈、堆区、元空间、本地方法栈和程序计数器
+	栈（stack）：栈中存放方法中的局部变量，方法的运行一定要在栈中进行。栈内存的数据用完就释放。			这里简单称为栈，但实际上是JVM栈，Java虚拟机栈
+	堆（heap）：堆是Java虚拟机中最大的一块内存区域，用于存储对象实例。通俗的理解，就是我们new出			来的所有对象和数组，都是存放在堆中的。
+	元空间（MetaSpace）：虚拟机加载的类信息、常量、各类方法的信息。
+
+
+30.浅克隆和深克隆
+基础数据类型为值传递，引用数据类型为引用传递
+	基础数据类型（int  boolean）在作为参数传递时，传递的是真实的数据，形参的改变，不影响实参
+	引用数据类型（类、数组、接口）在作为参数传递时，传递的是堆内存中的地址，形参改变，实参也改变
+
+Dog dog2 = dog1;//实际是一种浅克隆，并没有新建一块堆内存
+Dog dog2 = new Dog(dog1.getType(),dog1.getPrice());//此时为深克隆，在堆中新建了一块内存用来存储
+
+
+31.迭代器
+Java迭代器（Iterator）是Java集合框架中的一种机制，是一种用于遍历集合（如列表、集合和映射等）的接口
+迭代器接口定义了几个方法，最常用的是以下三个：
+	next()：E	返回迭代器的下一个元素，并将迭代器的指针移到下一个位置
+	hasNext()：boolean	用于判断集合中是否还有下一个元素可以访问
+	remove()：void	从集合中删除迭代器最后访问的元素
+
+
+增强型for循环，本质是迭代器遍历
+	如果使用容器本身的删除方法，它确实能修改容器的状态，但是它不能修改迭代器的状态
+	如果增强型for循环中删除容器中的元素，则会导致迭代器的状态和当前容器的状态不相同
+	而迭代器在每次next()的时候会判断这个状态是否相同，导致报错
+如果使用迭代器的删除方法，在需要边遍历边删除的时候，使用迭代器遍历，删除的时候使用迭代器自带的删除
+	则不会导致报错
+
+// 引入 ArrayList 和 Iterator 类
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class RunoobTest {
+    public static void main(String[] args) {
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+        numbers.add(12);
+        numbers.add(8);
+        numbers.add(2);
+        numbers.add(23);
+        Iterator<Integer> it = numbers.iterator();
+        while(it.hasNext()) {
+            Integer i = it.next();
+            if(i < 10) {  
+                it.remove();  // 删除小于 10 的元素
+            }
+        }
+        System.out.println(numbers);
+    }
+}
+
+
+32.继承
+继承是类之间的一种抽象层次关系
+继承让子类将获得父类的属性和方法，实现复用和扩展
+
+extends
+	子类可以访问父类的public和protected成员
+	private成员无法被直接访问，但可以调用父类的方法来访问
+
+单继承：一个类最多只有一个父类
+
+super关键字，可以用来调用属性、方法、构造器
+
+继承中的方法调用：当父子类出现同名方法时，我们观察创建的对象类型，是哪类就优先调用	哪类的方法，若本类中不存在该方法，则向上寻找父类方法进行调用
+
+向上转型和向下转型
+向上转型：在建立了继承关系之后，我们也可以使用Animal类来声明一个对象引用，并指向类	型为Dog的对象：Animal pet = new Dog(...)。从程序类型的角度，这个表达方式称	为向上的类型转换，简称向上转型
+
+向下转型：如果Animal animal = new Dog(...)
+		则animal instance of Dog返回true
+		此时可以使用向下转型，Dog dog = (Dog)animal 
+
+
+
+33.接口
+接口是一系列方法的声明，是一些方法特征的集合
+当类实现接口的时候，类要实现接口中所有的方法。否则，类必须声明为抽象的类
+
+注意：一个类可以同时实现多个接口
+	一个类只能继承一个类，但是能实现多个接口
+	一个接口能继承另一个接口，这和类之间的继承比较类似
+
+接口也是一种类型，可以用a instanceof B判断对象a是否实现了接口B，即是否是类型B的实例
+
+
+
+
+
+
+34.方法重写语法的规则
+访问权限：子类方法的访问权限必须大于等于父类方法
+
+方法名和参数列表：子类方法的方法名和参数列表必须与父类方法完全相同
+
+
+
+35.设计模式
+单例模式是确保一个类只有一个实例，而且自行实例化并向整个系统提供这个实例
+
+工厂模式
+抽象类：抽象类可以被理解成一个可以包含普通方法和成员变量的接口，在被子类继承时可以	选择性地Override抽象类的方法
+p
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

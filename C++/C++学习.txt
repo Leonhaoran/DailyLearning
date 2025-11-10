@@ -1,0 +1,28 @@
+1.如果没有声明命名空间（using namespace std），则需要使用  std::endl  来实现换行，当然简单的  \n  也可以实现。
+
+2.枚举
+enum color{//一般默认第一个元素为0
+	red = 0,
+	blue = 1,
+	yellow,
+	black
+};
+
+enum color c;
+c = black;
+std::cout<<"c = "<<c;
+
+3.局部变量和全局变量
+类作用域是指在类内部声明的变量
+
+4.auto：声明变量时根据初始化表达式自动推断该变量的类型。
+auto a = 3.14;//则a为double类型
+
+5.参数的默认值
+int sum(int a, int b = 20){  }
+如果在调用sum函数的时候，未传递参数的值，则会使用默认值，传递参数值之后，则会使用传递的参数值
+
+6.条件编译
+#ifdef 
+	#define ...
+#endif

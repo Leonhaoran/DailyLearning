@@ -1,0 +1,367 @@
+1.import语句用来导入其它的python文件（称为模块module），从而使用该模块里定义的类、方法或者变量，从而达到代码复用的目的。
+
+
+导入方法
+在同一个目录下的其它模块  import Module_name
+在不同目录下的其它模块  from Package_name import Module_name
+
+import和from xxx import xxx的区别
+例如：import skimage
+img = skimage.io.imread(...
+
+from skimage import io
+img = io.imread(...
+第一种方法只导入了skimage，没有声明io成员。所以在之后的代码中使用io成员都要声明是skimage中的io成员。
+第二种方法在导入skimage时就声明是skimage中的io成员，所以在之后使用中不需要再进行声明
+
+
+2.pyinstaller -F 文件名.py
+即可生成  文件名.exe  文件
+之后在dist文件夹下即可找到该exe文件
+
+3.python中的注释
+#  单行注释
+'''  利用三个单引号
+     在开头和结尾进行多行注释  '''
+
+
+4.为变量关联标识符的过程叫做命名
+命名规则：大小写字母、数字、下划线和汉字等字符的组合
+注意事项：大小写敏感、首字符不能是数字、不能与保留字重合
+
+
+5.字符串的序号
+正向递增序号和反向递减序号
+-4 -3 -2 -1
+a  b  c  d
+0  1  2  3
+
+使用[]获取字符串中的一个或多个字符，索引和切片
+如：TempStr[0]
+TempStr[1:3]  区间为左闭右开
+
+
+6.列表
+列表使用[]表示，采用逗号分隔列表内部的各元素
+如['f','F']
+
+可以用in来判断一个元素是否在列表中
+if 'a' in ['f','F']
+
+
+7.{}表示槽，后续变量填充到槽中
+如print('{:.2f}'.format(C))  四舍五入输出带有两位小数的数
+
+
+8.eval()函数
+将字符串最外侧的引号去掉，然后运行余下的语句
+如：eval('1+2')  然后变为3
+若：eval('"1+2"')  此时会变为1+2
+若：eval("print('hello world')")  此时会变为执行print语句
+
+
+9.判断字符串中是否包含特定字串
+in
+not in  判断字串是否在字符串中
+	a="abcdefg"
+	b="a"
+	if (a in b):结果为布尔数，Ture或者False
+   		print("It works.")
+	else:
+   		print("Oh, I know.")
+	
+find  如果找到字串，则返回字串在字符串中的出现位置
+	如果没有找到，则返回-1
+	a="abcdefg"
+	b="a"
+	if (a.find(b))==0://注意字符串中位置标号与C语言中字符数组的标号相同，从0开始
+    		print("It works.")
+	else:
+    		print("Oh...")
+
+
+10.turtle绘图
+
+屏幕坐标系左上角为(0,0),窗体坐标系左上角为绘图窗体的坐标原点(startx,starty)
+turtle.setup(width,height,startx,starty)
+	setup()设置窗体大小及位置，但其并非必须，只有在需要更改窗体大小及位置时需要使用
+
+
+11.turtle空间坐标体系
+
+绝对坐标  turtle一开始在窗口的正中间，于是以turtle为原点构成绝对坐标系，turtle起始方向为x轴正方向
+	turtle.goto(x,y)  让任何位置的turtle到达该位置
+
+海龟坐标  turtle.fd(d)  表示turtle向正前方行进
+	turtle.bk(d)  表示turtle反方向行进
+	turtle.circle(r,angle)  以当前位置左侧的某个点为圆心进行曲线运动
+
+绝对角度  即绝对坐标系中的角度
+	turtle.seth（angle)  改变海龟行进方向，但并不前进  angle代表度数，
+
+海龟角度  即海龟坐标系中的角度
+	turtle.left(angle)
+	turtle.right(angle)
+
+
+12.RGB色彩体系  由红绿蓝三种颜色构成的万物色
+	      覆盖视力所能感知的所有颜色
+	      RGB每色取值范围0~255整数或0~1小数
+如：白色  RGB整数值为255,255,255  RGB小数值为1,1,1
+
+turtle的RGB色彩模式，默认采用小数值，可切换为整数值
+turtle.colormode(mode)  1.0:RGB小数值模式  255:RGB整数值模式
+
+				
+
+13.库引用
+
+import 库
+库名.函数名(函数参数)
+
+from 库名 import*
+函数名(函数参数)
+但可能不同库中的函数名有冲突
+
+import 库名 as 库别名
+库别名.函数名(函数参数)
+
+
+14.画笔控制函数
+turtle.penup()  画笔提起
+turtle.pendown()  画笔放下
+turtle.pensize(width)  画笔宽度
+turtle.pencolor(color)  color为颜色字符串或RGB值
+	例如：RGB的小数值形式  turtle.pencolor(0.63,0.13,0.94)
+	     RGB的元组值形式  turtle.pencolor((0.63,0.13,0.94))
+
+
+15.运动控制函数
+turtle.circle(r,extent)  根据半径r绘制extent角度的弧形，圆心位于turtle左侧距离r的位置
+turtle.fd(distance)  turtle直线行走
+
+运动控制函数的参数可以是负数，即反方向运动
+
+
+16.range(N)  产生循环计数序列  即产生0到N-1的整数序列
+range(M,N)  产生从M到N-1的整数序列
+
+
+17.print("hello","world")可以在同一行，间隔一个空格输出这两个字符串
+
+
+18.pow(x,y)  x的y次方
+
+
+19.整数大小没有限制
+二进制以0b或0B开头
+八进制以0o或0O开头
+十六进制以0x或0X开头
+
+
+20.浮点数取值范围在-10^308至10^308，精度数量级为10^-16
+
+浮点数之间的运算会出现不确定尾数
+round(x,d)  对x进行四舍五入，d是小数截取位数  不会包含最后面的0
+
+浮点数的科学计数法
+使用字母e或E作为幂的符号，以10为基数，格式如下：
+	例如：4.3e-2  即为 0.043
+
+
+21.复数
+z=a+bj  z.real获得z的实部  z.imag获得z的虚部
+
+
+22.特殊的数值运算操作符
+x/y  结果为浮点数
+x//y  整数除，结果为整数
+-y  表示y的负值
+x%y  模运算，取余数
+x**y 幂运算或开方运算
+
+
+23.数值运算函数
+abs(x)  x的绝对值
+divmod(x,y)  进行商余操作，同时输出商和余数
+	例如：divmod(10,3)  结果为(3,1）
+pow(x,y,z)  z可以省略，即pow(x,y)的结果对z进行取余数运算
+round(x,d)  四舍五入函数，d为保留小数位数
+max(x1,x2,x3...)  返回参数的最大值
+min(x1,x2,x3...)  返回参数的最小值
+
+int(x)  将x变为整数，舍弃小数部分
+	若x为整数的字符串形式，则将其变为整数
+float(x）  将x变为浮点数，增加小数部分
+	    若x为小数的字符串形式，则将其变为浮点数
+complex(x)  将x变为复数，增加虚数部分
+
+
+24.字符串类型
+由一对单引号或双引号表示，仅表示单行字符串
+由一对三单引号或三双引号表示，可表示多行字符串
+
+如果字符串内部要同时出现单引号和双引号，则最外层只能用三个单引号或三个双引号表示
+
+
+25.字符串的序号
+正向和反向  
+索引和切片
+
+字符串切片[M:N:K]  k可以省略，
+	若[M:N]  M缺失表示至开头，N缺失表示至结尾
+	若[M:N:K]  根据步长K对字符串切片，每隔k个取一个字符
+	如:[::-1]  即为倒叙输出一个字符串
+
+
+26.转义符  \
+转义符表达特定字符的本意，如\"  即表示一个"
+\b  回退  光标向前移动一个位置
+\n  换行  光标移动到下行首
+\r  回车  光标移动到本行首，之后的输出会覆盖先前输出的内容
+
+
+27.print()函数会自动换行
+如果不需要换行，通过设置分隔符参数end，print(str,end="")，则输出str后只有end的参数
+
+
+28.字符串操作符
+str1+str2  连接两个字符串str1和str2
+n*str或str*n    复制n次字符串str
+str1 in str2  如果str1是str2的字串，返回True，否则返回False
+
+
+29.字符串处理函数
+len(str)  返回字符串的长度，在python中汉字字母数字均为1个字符
+str(x)  返回任意类型x所对应的字符串形式，即在x两侧加上“”
+hex(X)或ocx(x)  返回整数x的十六进制或八进制小写形式字符串
+
+chr(u)  u为Unicode编码，返回其对应的字符
+ord(x)  x为字符，返回其对应的Unicode编码，返回值是一个整数值
+
+Unicode编码    统一字符编码，即覆盖几乎所有字符的编码方式，每个编码对应一个字符
+
+
+30.字符串处理方法
+str.lower()或str.upper()  返回字符串的副本，全部字符小写或大写
+str.split(sep=None)   返回一个列表，由str根据sep被分隔的部分组成
+	如："A,B,C".split(",")  结果为['A','B','C']
+str.count(sub)  返回字串sub在str中出现的次数
+	如："an apple an day".count("a")  结果为4
+str.replace(old,new)  返回字符串副本，所有old字串被替换为new
+str.center(width,fillchar)  str根据宽度width居中，fillchar可以省略,但是最多只能填一个字符
+	如："python".center(20,"=")  结果为"=======python======="
+str.strip(chars)  从str中去掉在其左侧和右侧chars中列出的字符
+	如："= python= ".strip(" =p")  结果为"ytho"
+str.join(iter)  在iter变量除最后元素外，每个元素后增加一个str,主要用于字符串分隔
+	如：",".join("12345")    结果为"1,2,3,4,5"
+
+
+31.字符串类型的格式化
+格式化是对字符串进行格式表达的方式
+
+槽  {}    字符串中{}，在不指定的情况下，默认顺序，与format()中参数的顺序一致
+	如："{}:计算机{}的CPU占用率为{}%".format("2018-10-10","C",10)
+	
+	此外可以在槽中
+
+
+32.如何在cmd中运行exe文件
+方法一：切换到exe文件的目录下，打开终端，然后start xxx.exe
+方法二：直接打开终端，通过cd命令来切换目录到exe文件的目录下，然后start xxx.exe
+
+
+33.GUI  Graphical User Interface图形用户接口
+
+创建一个GUI程序
+from tkinter import * 	#导入模块
+tk_bg = Tk()		#创建窗口
+bm = Button()		#创建按键控件
+bm.pack()		#显示控件
+tk_bg.mainloop()	#显示窗口
+
+Button()控件可以在窗口上显示按键
+Label()控件可以在窗口显示文字
+from tkinter import *
+tk_bg = Tk()
+tk_bg.title("第一个GUI")	#窗口名称
+lb = Label()			#创建一个输出框控件
+lb['text'] = 'Hello World'	#写入文本
+lb['width'] = 100		#控制该控件左右宽度
+lb['height'] = 10		#控制该控件上下高度
+lb.pack()			#显示控件
+
+bm = Button()			#创建按键控件
+bm['text'] = "Yes"		#写入文本
+bm.pack()			#显示控件
+
+tk_bg.mainloop()		#显示窗口
+
+注意：Tk中的窗口显示顺序默认是自上而下的，先调用pack()的控件会显示在上面
+
+
+34.exit()是Python的一个内置函数。
+exit()函数可以接收（非必需）一个整数参数作为退出代码
+exit(0)  表示程序正常退出
+exit(1)	 表示程序执行出错
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
