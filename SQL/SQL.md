@@ -78,3 +78,41 @@
 		WHERE teacher.Tname = '万寒'
 	);
 
+
+### PostgreSQL
+
+#### schema
+类似于目录
+在PostgreSQL中，schema(模式)是数据库对象的命名空间
+
+#### MVCC 多版本并发控制
+![alt text](assets/SQL/image.png)
+读取操作不会对正在进行的写操作产生阻塞，从而降低了数据库的负载，提高了读取性能。
+
+![alt text](assets/SQL/image-2.png)
+![alt text](assets/SQL/image-1.png)
+
+#### PostGIS
+PostgreSQL数据库的地理信息系统扩展插件
+
+存储空间数据
+POINT 点
+LINESTRING 线
+POLYGON 面
+MULTI* 多点、多线、多边形
+GEOGRAPHY 地球坐标类型，用经纬度
+
+空间计算函数
+ST_Distance 计算距离
+ST_Intersects 判断是否相交
+ST_ShortestPath 最短路径
+
+空间索引
+
+
+#### 常用函数
+ST_SetSRID(geometry, 4326) 表示将geometry设置成WGS84经纬度坐标系
+ST_MakeLine(geometry, geometry) 将两个点连成一条线
+ST_PointN(ST_LineString, index) 取polyline的第index个点
+
+
