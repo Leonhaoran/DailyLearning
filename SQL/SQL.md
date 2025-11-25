@@ -1,28 +1,28 @@
-# SQL笔记
+### MySQL
 
-## CHECK约束的添加与删除
+#### CHECK约束的添加与删除
 	添加CHECK约束：ALTER TABLE 表名 ADD CONSTRAINT 约束名 (条件表达式)
 	例如：ALTER TABLE course ADD CONSTRAINT check_ccredit CHECK ((Ccredit > 0) && (Ccredit < 10))
 	删除CHECK约束：ALTER TABLE 表名 DROP CONSTRAINT 约束名
 	例如：ALTER TABLE course DROP CONSTRAINT check_ccredit
 
-## 主码的添加与删除
+#### 主码的添加与删除
 	添加主码：ALTER TABLE 表名 ADD CONSTRAINT 约束名 PRIMARY KEY(列1，列2)
 	例如：
 	删除主码：ALTER TABLE 表名 DROP PRIMARY KEY
 	例如：
 
-## 外码的添加与删除
+#### 外码的添加与删除
 	添加外码：ALTER TABLE 表名 ADD CONSTRAINT 约束名 外码约束
 	例如：
 	删除外码：ALTER TABLE 表名 DROP CONSTRAINT 约束名
 	例如：ALTER TABLE course DROP CONSTRAINT Tid 
 
-## 创建唯一约束
+#### 创建唯一约束
 	ALTER TABLE 表名 ADD CONSTRAINT 约束名 UNIQUE (列名)
 	例如：ALTER TABLE teacher ADD CONSTRAINT unique_email UNIQUE (Temail)
 
-## 多表连接和条件查询
+#### 多表连接和条件查询
 	SELECT 
 		student.Sname, course.Cname, sc.Score, teacher.Tname 
 	FROM 
@@ -38,10 +38,10 @@
 		course.Ccredit >= 3 AND
 		sc.Score >= 90
 	
-## 建立索引
+#### 建立索引
 	CREATE INDEX id_22373400 ON teacher(Tid);
 
-## 建立视图
+#### 建立视图
 	CREATE VIEW SC_22 AS
 	SELECT 
 		sc .Sid ,
@@ -54,7 +54,7 @@
 	WHERE 
 		SUBSTRING(CAST(sc.Sid AS CHAR), 1, 2) = '22';
 
-## 将编号最大的两门课程的类型改为必修
+#### 将编号最大的两门课程的类型改为必修
 	WITH RankedCourses AS (  
 		SELECT  
 			Cid,  
@@ -67,7 +67,7 @@
 	SET course.Ctype = '必修'  
 	WHERE RankedCourses.rn <= 2;
 
-## 将Y老师的教授的所有课的学生的成绩更改为Z分
+#### 将Y老师的教授的所有课的学生的成绩更改为Z分
 	# score中只有Sid, Cid和Score，所以需要根据Cid找相应的课程，然后再找对应的老师
 	UPDATE sc 
 	SET Score = 100
@@ -80,6 +80,9 @@
 
 
 ### PostgreSQL
+
+#### 表名和字段名全部设为小写
+MySQL支持大小写，postgresql需要去那全部小写
 
 #### schema
 类似于目录
@@ -115,4 +118,21 @@ ST_SetSRID(geometry, 4326) 表示将geometry设置成WGS84经纬度坐标系
 ST_MakeLine(geometry, geometry) 将两个点连成一条线
 ST_PointN(ST_LineString, index) 取polyline的第index个点
 
+将两组结果垂直合并
+UNION ALL 不去重，比UNION更快
+UNION 会去掉重复
 
+#### 索引
+在表中创建索引，可以更快速高效地查询数据
+在不读取整个表的情况下，索引可以使数据库应用程序更快地查找数据
+
+但是更新一个包含索引的表，比更新一个没有索引的表需要更多的时间，因为索引本身也需要更新
+
+理想的做法是仅仅在频繁被搜索的列上面创建索引
+
+##### 索引的分类
+B-tree
+Hash
+GiST 一种索引架构，可以在架构上实现不同的索引策略
+SP-GiST
+GIN 
