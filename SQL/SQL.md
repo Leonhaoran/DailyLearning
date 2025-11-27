@@ -111,6 +111,9 @@ POLYGON 面
 MULTI* 多点、多线、多边形
 GEOGRAPHY 地球坐标类型，用经纬度
 
+geom1 = geom2
+PostGIS中，geometry类型重载了 = 运算符
+
 空间计算函数
 ST_Distance 计算距离
 ST_Intersects 判断是否相交
@@ -142,3 +145,14 @@ Hash
 GiST 一种索引架构，可以在架构上实现不同的索引策略
 SP-GiST
 GIN 
+
+##### CTE (Common Table Expression 公用表达式)
+WITH cet_name AS (
+	SELECT ...
+)
+SELECT *
+FROM cte_name;
+相当于建立一个临时表
+
+##### LIMIT 限制返回的行数
+SELECT * FROM COMPANY LIMIT 4;
